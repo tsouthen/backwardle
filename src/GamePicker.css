@@ -1,0 +1,7 @@
+.showLineBreaks {
+  white-space: pre-line;
+}
+
+.gameNumberInput {
+  width: 3em;
+}

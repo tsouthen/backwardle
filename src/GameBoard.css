@@ -1,0 +1,62 @@
+.GameBoard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.wordRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  margin: .5rem 0;
+}
+
+.Maybes {
+  position: absolute;
+}
+
+.letter {
+  width: 75px;
+  height: 75px;
+  outline-offset: -2px;
+  outline: 2px solid gray;
+  padding: 1rem 1.25rem;
+  font-size: 48px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+  vertical-align: middle;
+  box-sizing: border-box;
+  color: white;
+  text-transform: uppercase;
+  user-select: none;
+  transition: .75s;
+}
+.letter:before {
+  content: 'A';
+  color: transparent;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  font-size: 0;
+}
+
+.letter-correct {
+  background: #538d4e;
+  outline: 0;
+}
+.letter-misplaced {
+  background: #b59f3b;
+  outline: 0;
+}
+.letter-incorrect {
+  background: #3a3a3c;
+  outline: 0;
+}
