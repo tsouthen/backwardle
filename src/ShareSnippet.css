@@ -3,6 +3,18 @@
   margin-bottom: 1em;
 }
 
+.ShareSnippet button { 
+  font-weight: bold;
+  margin-bottom: 1em;
+  border: none;
+  background-color: green;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 .ShareSnippet-prompt {
   animation: pulsate 2s ease-out;
   animation-iteration-count: infinite;

@@ -7,7 +7,7 @@ function ShareSnippet({ snippet, onPaste }) {
     event.preventDefault();
     let clipText = (event.clipboardData || window.clipboardData).getData('text');
     onPaste(clipText);
-  }, []);
+  }, [onPaste]);
 
   useEffect(() => {
     window.addEventListener("paste", handleUserPaste);
@@ -16,14 +16,15 @@ function ShareSnippet({ snippet, onPaste }) {
     };
   }, [handleUserPaste]);
 
-  if(snippet=="") {
-    return (<div className="ShareSnippet">
-      <div className="ShareSnippet-prompt">CTRL + V</div>
-    </div>);
-  };
   return (
     <div className="ShareSnippet">
-      <div>FromClipboard:</div>
+      <button onClick={async () => {
+        const text = await navigator.clipboard.readText();
+        if (text)
+          onPaste(text);
+      }}>
+        <div className="ShareSnippet-prompt">Paste Shared Wordle</div>
+      </button>
       <div id='pasted-result' className="showLineBreaks">{snippet}</div>
     </div>
   );
