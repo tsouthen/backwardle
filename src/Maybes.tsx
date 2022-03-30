@@ -2,7 +2,7 @@ import React from 'react';
 import { dictionary } from './dictionary';
 import { solutions } from './solutions';
 
-const allWords = dictionary.concat(solutions);
+const allWords = solutions.concat(dictionary);
 
 const GUESS_TESTS = [
   (word: string, target: string, i: number) => word[i] !== target[i] && !target.includes(word[i]),
