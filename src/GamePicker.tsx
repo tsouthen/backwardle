@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+import React from 'react';
 import './GamePicker.css';
+import WorldleSolution from './WorldleSolution';
 
-function GamePicker({ onChange, solution }) {
-  const handleInputChange = useCallback(event => {
-    const index = event.target.value;
-    onChange(index);
-  }, [solution]);
+export default function GamePicker({onChange, solution}: { onChange: (index: number) => void, solution: WorldleSolution }) {
+  const handleInputChange = React.useCallback(event => {
+    onChange(event.target.value);
+  }, [onChange]);
 
   return (
     <div className="GamePicker">
@@ -21,5 +21,3 @@ function GamePicker({ onChange, solution }) {
     </div>
   );
 }
-
-export default GamePicker;

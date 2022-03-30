@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import GamePicker from './GamePicker';
 import GameBoard from './GameBoard';
 import ShareSnippet from './ShareSnippet';
@@ -9,16 +9,16 @@ import './App.css';
 
 const todaysSolution = WorldleSolution.fromDate(new Date());
 
-function App() {
-  const [snippet, setSnippet] = useState('');
-  const [solution, setSolution] = useState(todaysSolution);
-  const [recap, setRecap] = useState();
-  const onChangePick = (index) => {
+export default function App() {
+  const [snippet, setSnippet] = React.useState('');
+  const [solution, setSolution] = React.useState(todaysSolution);
+  const [recap, setRecap] = React.useState<WorldleRecap>();
+  const onChangePick = (index: number) => {
     setSnippet('')
     const inputSolution = new WorldleSolution(index);
     setSolution(inputSolution)
   }
-  const onPaste = (clipText) => {
+  const onPaste = (clipText: string) => {
     const recap = WorldleRecap.fromShareText(clipText);
     setSnippet(clipText);
     setRecap(recap);
@@ -34,5 +34,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

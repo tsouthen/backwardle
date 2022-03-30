@@ -1,15 +1,13 @@
-import { useCallback, useEffect } from 'react';
-
+import React from 'react';
 import './ShareSnippet.css';
 
-function ShareSnippet({ snippet, onPaste }) {
-  const handleUserPaste = useCallback(event => {
+export default function ShareSnippet({ snippet, onPaste }: {snippet: string, onPaste: (clipText:string) => void}) {
+  const handleUserPaste = React.useCallback(event => {
     event.preventDefault();
-    let clipText = (event.clipboardData || window.clipboardData).getData('text');
-    onPaste(clipText);
+    onPaste(event.clipboardData.getData('text'));
   }, [onPaste]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.addEventListener("paste", handleUserPaste);
     return () => {
       window.removeEventListener("paste", handleUserPaste);
@@ -29,5 +27,3 @@ function ShareSnippet({ snippet, onPaste }) {
     </div>
   );
 }
-
-export default ShareSnippet;

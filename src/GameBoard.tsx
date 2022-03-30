@@ -1,16 +1,18 @@
+import React from 'react';
 import Maybes from './Maybes'
+import WorldleRecap from './WorldleRecap';
 import './GameBoard.css';
 
-const BLOCK_CLASS_MAP = {
-  0: 'letter-untouched',
-  1: 'letter-incorrect',
-  2: 'letter-misplaced',
-  3: 'letter-correct',
-}
+const BLOCK_CLASS_MAP = [
+  'letter-untouched',
+  'letter-incorrect',
+  'letter-misplaced',
+  'letter-correct',
+];
 
-function GameBoard({ recap }) {
-  const lines = new Array(6).fill().map(() => new Array(5).fill(0));
-  (recap && recap.guesses || [[]]).forEach((word, i) => {
+export default function GameBoard({recap} : { recap: WorldleRecap|undefined }) {
+  const lines = new Array<Array<number>>(6).fill([]).map(() => new Array<number>(5).fill(0));
+  ((recap && recap.guesses) || [[]]).forEach((word, i) => {
     word.forEach((guess, j) => {
       lines[i][j] = guess;
     });
@@ -33,5 +35,3 @@ function GameBoard({ recap }) {
     </div>
   );
 }
-
-export default GameBoard;
